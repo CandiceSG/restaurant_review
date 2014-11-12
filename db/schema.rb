@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112102816) do
+ActiveRecord::Schema.define(version: 20141112103424) do
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
@@ -21,5 +21,15 @@ ActiveRecord::Schema.define(version: 20141112102816) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reviews", force: true do |t|
+    t.text     "context"
+    t.integer  "rating"
+    t.integer  "restaurant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id"
 
 end
